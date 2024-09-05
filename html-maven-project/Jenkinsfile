@@ -31,15 +31,10 @@ stages {
     steps {
    // start maven server to serve html file by using maven jetty plugin or Tomcat:
       dir('html-maven-project') {  
-        sh 'mvn org.eclipse.jetty:jetty-maven-plugin:run'
+        sh 'java -jar target/dependency/jetty-runner.jar --port 80 target/html-maven-project.war'
 }
 }
 }
 }
-post {
-  always {
-	// clean up
-    cleanWs()
 }
-}
-}
+
