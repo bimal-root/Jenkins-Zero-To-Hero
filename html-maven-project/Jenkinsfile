@@ -18,8 +18,10 @@ stages {
 }
 }
   stage('Run') {
+    steps {
    // start maven server to serve html file by using maven jetty plugin or Tomcat:
-    sh 'mvn jetty:run'
+      sh 'mvn jetty:run'
+}
 }
 }
 post {
