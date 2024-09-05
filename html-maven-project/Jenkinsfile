@@ -3,9 +3,13 @@ pipeline {
   agent {
     docker {
       image 'maven:3.8.6-openjdk-11'
-      args '-v /root/.m2:/root/.m2' //optional: to checkmaven dependencies
+      args '-v /var/run/docker.sock:/var/run/docker.sock -p 80:80' // Map port 80 to the host
 }
 }
+  environment {
+    MAVEN_OPTS = '-Dmaven.test.skip=true' // Skip tests if not needed
+}
+
 stages {
   stage('Checkout') {
     steps {
@@ -13,12 +17,6 @@ stages {
         url: 'https://github.com/bimal-root/Jenkins-Zero-To-Hero.git'
 } 
 }
-  stage('Verify') {
-    steps {
-      sh 'pwd && ls -l'
-}
-}
-
   stage('Build') {
     steps {
     // build mvn project
@@ -29,7 +27,8 @@ stages {
 }
   stage('Run Jetty server') {
     steps {
-   // start maven server to serve html file by using maven jetty plugin or Tomcat:
+      // Start Jetty server with the WAR file on port 80
+
       dir('html-maven-project') {  
         sh 'java -jar target/dependency/jetty-runner.jar --port 80 target/html-maven-project.war'
 }
