@@ -15,7 +15,7 @@ stages {
 }
   stage('Verify') {
     steps {
-      sh 'pwd && ls -l /html-maven-project'
+      sh 'pwd && ls -l'
 }
 }
 
