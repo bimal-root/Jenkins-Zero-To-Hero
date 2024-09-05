@@ -10,12 +10,12 @@ stages {
   stage('Checkout') {
     steps {
       git branch: 'main', 
-        url: 'https://github.com/bimal-root/Jenkins-Zero-To-Hero/html-maven-project.git'
+        url: 'https://github.com/bimal-root/Jenkins-Zero-To-Hero.git'
 } 
 }
   stage('Verify') {
     steps {
-      sh 'pwd && ls -l'
+      sh 'pwd && ls -l /html-maven-project'
 }
 }
 
