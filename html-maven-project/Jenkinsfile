@@ -23,7 +23,7 @@ stages {
     steps {
     // build mvn project
       dir('html-maven-project') {
-        sh 'mvn clean install'
+        sh 'mvn clean package'
 }
 }
 }
