@@ -15,14 +15,14 @@ stages {
 }
   stage('Verify') {
     steps {
-      sh 'ls -l /Jenkins-Zero-To-Hero/html-maven-project'
+      sh 'ls -l /html-maven-project'
 }
 }
 
   stage('Build') {
     steps {
     // build mvn project
-      sh 'mvn -f /Jenkins-Zero-To-Hero/html-maven-project/pom.xml clean package'
+      sh 'mvn -f /html-maven-project/pom.xml clean package'
 }
 }
   stage('Run') {
