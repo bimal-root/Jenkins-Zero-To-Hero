@@ -27,10 +27,10 @@ stages {
 }
 }
 }
-  stage('Run') {
+  stage('Run Jetty server') {
     steps {
    // start maven server to serve html file by using maven jetty plugin or Tomcat:
-      sh 'mvn -X jetty:run'
+      sh 'mvn org.eclipse.jetty:jetty-maven-plugin:run'
 }
 }
 }
