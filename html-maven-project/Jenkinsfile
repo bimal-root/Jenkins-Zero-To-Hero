@@ -13,10 +13,16 @@ stages {
         url: 'https://github.com/bimal-root/Jenkins-Zero-To-Hero.git'
 } 
 }
+  stage('Verify') {
+    steps {
+      sh 'ls -l'
+}
+}
+
   stage('Build') {
     steps {
     // build mvn project
-      sh 'mvn clean package'
+      sh 'mvn -f /html-maven-project/pom.xml clean package'
 }
 }
   stage('Run') {
