@@ -6,6 +6,14 @@
     <groupId>com.example</groupId>
     <artifactId>html-maven-project</artifactId>
     <version>1.0-SNAPSHOT</version>
+    
+    <repositories>
+    <repository>
+        <id>central</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    </repositories>
+
 
     <dependencies>
         <!-- No dependencies required for basic HTML -->
