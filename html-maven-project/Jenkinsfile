@@ -22,7 +22,7 @@ stages {
   stage('Build') {
     steps {
     // build mvn project
-      sh 'mvn -f /html-maven-project/pom.xml clean package'
+      sh 'mvn -f /Jenkins-Zero-To-Hero/html-maven-project/html-maven-project/pom.xml clean package'
 }
 }
   stage('Run') {
