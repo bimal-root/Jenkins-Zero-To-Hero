@@ -10,19 +10,21 @@ stages {
   stage('Checkout') {
     steps {
       git branch: 'main', 
-        url: 'https://github.com/bimal-root/Jenkins-Zero-To-Hero.git'
+        url: 'https://github.com/bimal-root/Jenkins-Zero-To-Hero/html-maven-project.git'
 } 
 }
   stage('Verify') {
     steps {
-      sh 'ls -l'
+      sh 'pwd && ls -l'
 }
 }
 
   stage('Build') {
     steps {
     // build mvn project
-      sh 'mvn -f /html-maven-project/pom.xml clean package'
+      dir('html-maven-project') {
+        sh 'mvn clean install'
+}
 }
 }
   stage('Run') {
