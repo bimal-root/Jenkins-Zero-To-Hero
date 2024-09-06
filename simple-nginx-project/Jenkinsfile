@@ -15,7 +15,7 @@ pipeline {
                   sh 'cp -f simple-nginx-project/index.html /usr/share/nginx/html/index.html'
                 }
                 // Run Nginx container and serve the content
-                  sh 'nginx -g "daemon off;"'
+                  sh 'nginx -g "daemon off;" &'
             }
         }
     }
