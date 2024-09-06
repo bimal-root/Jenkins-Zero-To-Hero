@@ -1,0 +1,27 @@
+pipeline {
+    agent {
+        docker {
+            image 'nginx:alpine'
+            args '-p 80:80'
+        }
+    }
+    stages {
+        stage('Serve Hello World') {
+            steps {
+                script {
+                    // Copy the index.html into the Nginx container's default web root
+                    sh 'mkdir -p /usr/share/nginx/html'
+                    sh 'cp index.html /usr/share/nginx/html/index.html'
+                }
+                // Run Nginx container and serve the content
+                sh 'nginx -g "daemon off;"'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+    }
+}
+
