@@ -11,7 +11,7 @@ pipeline {
                 script {
                     // Copy the index.html into the Nginx container's default web root
                     sh 'mkdir -p /usr/share/nginx/html'
-                    sh 'cp $WORKSPACE/index.html /usr/share/nginx/html/index.html'
+                    sh 'cp simple-nginx-project/index.html /usr/share/nginx/html/index.html'
                 }
                 // Run Nginx container and serve the content
                 sh 'nginx -g "daemon off;"'
