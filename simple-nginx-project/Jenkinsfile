@@ -3,6 +3,7 @@ pipeline {
         docker {
             image 'nginx:alpine'
             args '-p 8090:80'
+            runAsUser 'root'
         }
     }
     stages {
@@ -11,7 +12,6 @@ pipeline {
                 script {
                     // Copy the index.html into the Nginx container's default web root
                   
-                  sh 'sudo chown -R root:root /usr/share/nginx/html'
                   sh 'sudo cp -f simple-nginx-project/index.html /usr/share/nginx/html/index.html'
                 }
                 // Run Nginx container and serve the content
